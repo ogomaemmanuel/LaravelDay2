@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+
 use Illuminate\Database\Eloquent\Model;
 use App\Blog;
 use Illuminate\Support\Facades\Auth;
@@ -26,21 +27,13 @@ class BlogRepository
     {
 
 
-        $this->post = $request->all();
+
         $this->blog = new Blog();
         $this->blog->title = $request['title'];
         $this->blog->body = $request['body'];
         $this->blog->user_id = auth()->id();
        return $this->blog->save();
-//        Blog::create([
-//            'title' => $request->get('title'),
-//            'body' => $request->get('body'),
-//            'user_id' => auth()->id()
-//        ]);
 
-
-//        $request->user()->blogs()->save($blog);
-        //Mail::to(email())->queue(new BlogObserverMail($this->post));
 
     }
 
@@ -57,7 +50,8 @@ class BlogRepository
 
     public function show($id)
     {
-        return $this->model -> findOrFail($id);
+       $blog= Blog::with('comments')->find($id);
+        return $blog;
     }
 
     // Get the associated model
