@@ -7,6 +7,25 @@
             <a href="/blog/create" class="btn btn-primary">Create New Blog</a>
         </div>
         <h1>Blogs</h1>
+
+        {!! Form::open(['action' => 'BlogController@search', 'method' => 'Get']) !!}
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-4 ol-lg-4">
+                    {{Form::date('search', '', ['class' => 'form-control', 'type'=>'date', 'placeholder' => 'search'])}}
+                </div>
+                <div class="col-md-4 ol-lg-4">
+                    {{Form::submit('Submit', ['class'=>'btn btn-primary'])}}
+                </div>
+            </div>
+
+
+
+        </div>
+
+        {!! Form::close() !!}
+
         @if(count($blogs) > 0)
             <div class="row">
             @foreach($blogs as $blog)

@@ -11,7 +11,7 @@
                 {{$blog->body}}
             </div>
             <div class="">
-{{--                Created by: {{$blog->user()->id?}}--}}
+               Created by: {{$blog->user->name}}
 
             </div>
 

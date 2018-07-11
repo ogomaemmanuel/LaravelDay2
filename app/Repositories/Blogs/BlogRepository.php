@@ -13,9 +13,9 @@ class BlogRepository
 
     public $post;
 
-    public function __construct(Blog $model)
+    public function __construct()
     {
-        $this->model = $model;
+       // $this->model = $model;
     }
 
     public function all()
@@ -25,15 +25,11 @@ class BlogRepository
 
     public function save($request)
     {
-
-
-
-        $this->blog = new Blog();
-        $this->blog->title = $request['title'];
-        $this->blog->body = $request['body'];
-        $this->blog->user_id = auth()->id();
-       return $this->blog->save();
-
+        $blog = new Blog();
+        $blog->title = $request['title'];
+        $blog->body = $request['body'];
+        $blog->user_id = auth()->id();
+       return $blog->save();
 
     }
 
@@ -45,7 +41,7 @@ class BlogRepository
 
     public function delete($id)
     {
-        return $this->model->destroy($id);
+        //return $this->model->destroy($id);
     }
 
     public function show($id)
@@ -57,7 +53,7 @@ class BlogRepository
     // Get the associated model
     public function getModel()
     {
-        return $this->model;
+        //return $this->model;
     }
 
     // Set the associated model

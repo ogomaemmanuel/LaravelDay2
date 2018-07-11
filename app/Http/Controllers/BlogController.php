@@ -37,7 +37,14 @@ class BlogController extends Controller
 
         return view('blogs.index')->with('blogs', $blogs);
     }
+    public function search(Request $search)
+    {
+        //dd($search->all());
+        $blogs = Blog::filterByDate($search['search'])->orderBy('created_at','desc')->paginate(10);
 
+
+        return view('blogs.index')->with('blogs', $blogs);
+    }
     /**
      * Show the form for creating a new resource.
      *

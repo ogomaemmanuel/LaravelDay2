@@ -19,4 +19,13 @@ class Blog extends Model
     public function setTitleAttribute($value){
         $this->attributes['title'] = strtoupper($value);
     }
+
+    public function scopeFilterByDate($query,$date = null){
+
+        if($date){
+            return $query->where('created_at', $date);
+        }
+        return $query;
+
+    }
 }
