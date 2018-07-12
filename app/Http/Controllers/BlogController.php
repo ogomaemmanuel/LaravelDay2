@@ -64,6 +64,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'body'=>'required'
+        ]);
+
         $blog = $this->blogRepository->save($request);
 
 
