@@ -3,7 +3,7 @@ namespace App\Blogs\Repositories;
  interface BlogRepositoryInterface{
     public function all();
 
-    public function create(array $data);
+    public function save(array $data);
 
     public function update(array $data, $id);
 

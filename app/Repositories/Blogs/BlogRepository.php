@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 
+use App\Blogs\Repositories\BlogRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Blog;
 use Illuminate\Support\Facades\Auth;
@@ -12,18 +13,18 @@ class BlogRepository implements BlogRepositoryInterface
 {
 
     public $post;
-
+    private $model;
     public function __construct()
     {
-       // $this->model = $model;
+
     }
 
     public function all()
     {
-        $this->model->all();
+       return Blog::all();
     }
 
-    public function save($request)
+    public function save(array $request)
     {
         $blog = new Blog();
         $blog->title = $request['title'];
@@ -33,9 +34,9 @@ class BlogRepository implements BlogRepositoryInterface
 
     }
 
-    public function update($id, $request)
+    public function update( array $request,$id)
     {
-        $record = $this->find($id);
+        $record=  Blog::find($id);
         return $record->update($request->all());
     }
 
@@ -48,18 +49,5 @@ class BlogRepository implements BlogRepositoryInterface
     {
        $blog= Blog::with('comments')->find($id);
         return $blog;
-    }
-
-    // Get the associated model
-    public function getModel()
-    {
-        //return $this->model;
-    }
-
-    // Set the associated model
-    public function setModel($model)
-    {
-        $this->model = $model;
-        return $this;
     }
 }
