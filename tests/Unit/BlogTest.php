@@ -1,6 +1,7 @@
 <?php
+namespace Tests\Unit;
 
-
+use App\Blog;
 use Tests\TestCase;
 
 class BlogTest extends TestCase {
@@ -10,6 +11,11 @@ class BlogTest extends TestCase {
     }
 
 
-    function test
+    function testBodyRequired(){
+
+        $blog= new Blog();
+        $blog->name=null;
+        $this->assertNotValid($blog);
+    }
 
 }

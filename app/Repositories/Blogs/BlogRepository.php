@@ -8,7 +8,7 @@ use App\Blog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\BlogObserverMail;
-class BlogRepository
+class BlogRepository implements BlogRepositoryInterface
 {
 
     public $post;

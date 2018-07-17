@@ -18,13 +18,14 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * /Users/eogoma/projects/blog/app
      * @return \Illuminate\Http\Response
      */
     //use Notifiable;
 
     public $blogRepository;
 
-    public  function __construct(BlogRepository $blogRepository)
+    public  function __construct(BlogRepositoryInterface $blogRepository)
     {
         $this->middleware('auth');
         $this->blogRepository = $blogRepository;

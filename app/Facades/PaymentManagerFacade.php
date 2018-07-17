@@ -9,7 +9,10 @@
 namespace App\Facades;
 
 
-class PaymentManager
+use Illuminate\Support\Facades\Facade;
+
+class PaymentManagerFacade extends Facade
 {
+    protected static function getFacadeAccessor() { return 'PaymentManager'; }
 
 }

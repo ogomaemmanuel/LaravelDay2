@@ -9,8 +9,6 @@
 namespace App;
 
 
-use GuzzleHttp\Client;
-
 class MpesaAuth implements PaymentDecoratorInterface
 {
     private $key;
