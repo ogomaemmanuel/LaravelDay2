@@ -1,6 +1,7 @@
 <?php
 
 namespace Tests\Unit;
+
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Mockery\Exception\BadMethodCallException;
@@ -23,9 +24,11 @@ class BlogControllerTest extends TestCase
         }
         throw new BadMethodCallException();
     }
-    public function loginUser(){
-        $user= factory(User::class)->create();
-        return Auth::login($user,true);
+
+    public function loginUser()
+    {
+        $user = factory(User::class)->create();
+        return Auth::login($user, true);
     }
 
     public function testExample()
@@ -46,7 +49,8 @@ class BlogControllerTest extends TestCase
 //
 //    }
 
-    public function testRedirectsToBlogPageOnAuth(){
+    public function testRedirectsToBlogPageOnAuth()
+    {
         $this->loginUser();
         $resp = $this->get('blog');
         $resp->assertStatus(200);

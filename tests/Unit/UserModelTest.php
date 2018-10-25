@@ -20,8 +20,9 @@ class UserModelTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function loginUser(){
-         $user= factory(User::class)->create();
-         return Auth::login($user,true);
+    public function loginUser()
+    {
+        $user = factory(User::class)->create();
+        return Auth::login($user, true);
     }
 }

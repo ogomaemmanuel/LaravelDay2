@@ -21,7 +21,7 @@ class BlogCreatedListener
     /**
      * Handle the event.
      *
-     * @param  BlogCreated  $event
+     * @param  BlogCreated $event
      * @return void
      */
     public function handle(BlogCreated $event)

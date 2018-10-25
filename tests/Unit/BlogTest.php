@@ -1,20 +1,23 @@
 <?php
+
 namespace Tests\Unit;
 
 use App\Blog;
 use Tests\TestCase;
 
-class BlogTest extends TestCase {
+class BlogTest extends TestCase
+{
 
     public function __construct()
     {
     }
 
 
-    function testBodyRequired(){
+    function testBodyRequired()
+    {
 
-        $blog= new Blog();
-        $blog->name=null;
+        $blog = new Blog();
+        $blog->name = null;
         $this->assertNotValid($blog);
     }
 

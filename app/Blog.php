@@ -6,23 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends Model
 {
-    protected $fillable = ['title', 'body'];
+    protected $fillable = ['title', 'body', 'user_id'];
 
 
-    public function user(){
-        return $this->belongsTo('App\User');
-    }
-    public function comments(){
-        return $this->hasMany('App\Comment');
+    public function user()
+    {
+            return $this->belongsTo(User::class);
     }
 
-    public function setTitleAttribute($value){
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function setTitleAttribute($value)
+    {
         $this->attributes['title'] = strtoupper($value);
     }
 
-    public function scopeFilterByDate($query,$date = null){
+    public function scopeFilterByDate($query, $date = null)
+    {
 
-        if($date){
+        if ($date) {
             return $query->where('created_at', $date);
         }
         return $query;

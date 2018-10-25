@@ -15,8 +15,19 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import locale from 'element-ui/lib/locale/lang/en'
+import router from  './routers/router'
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+Vue.use(ElementUI, { locale })
+Vue.use(VueAxios,axios);
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('bloglist', require('./components/Blogs/BlogList.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router,
 });

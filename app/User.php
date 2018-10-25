@@ -24,14 +24,17 @@ class User extends Authenticatable
      * @var array
      */
 
-    public function blogs(){
+    public function blogs()
+    {
         $this->hasMany('App\Blog');
     }
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    public function getNameAttribute($value){
-        return ucwords($value) ;
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
     }
 }

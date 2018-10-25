@@ -11,13 +11,16 @@ class Comment extends Model
     use SoftDeletes;
     protected $dates = ['deleted_at'];
 
-    function blog(){
-       return $this->belongsTo('App\Blog');
+    protected $fillable=['body','blog_id'];
+
+   public function blog()
+    {
+        return $this->belongsTo(Blog::class,'blog_id');
     }
 
-    function scopeGetAllComments($query){
+    function scopeGetAllComments($query)
+    {
         return $query->withTrashed()->orderBy('created_at',
             'desc')->get();
     }
-
 }

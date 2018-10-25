@@ -10,6 +10,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use App\Blog;
+
 class BlogCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
@@ -20,9 +21,10 @@ class BlogCreated
      * @return void
      */
     public $blog;
+
     public function __construct(Blog $blog)
     {
-        $this->blog=$blog;
+        $this->blog = $blog;
         //
     }
 

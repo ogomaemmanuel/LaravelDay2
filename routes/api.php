@@ -13,6 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('postblog', '\App\Http\Controllers\Api\BlogController@store');
+
+Route::get('bloglist', '\App\Http\Controllers\Api\BlogController@index');
+
+Route::get('blog/{id}', '\App\Http\Controllers\Api\BlogController@show');

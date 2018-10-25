@@ -25,21 +25,24 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {$this->app->bind('App\MpesaAuth',function ($app){
-        return new MpesaAuth(env('MPESA_CONSUMER_KEY'), env('MPESA_CONSUMER_SECRET'));
-    });
+    {
+        $this->app->bind('App\MpesaAuth', function ($app) {
+            return new MpesaAuth(env('MPESA_CONSUMER_KEY'), env('MPESA_CONSUMER_SECRET'));
+        });
 
-        $this->app->bind('PaymentManager',function ($app){
-            return new PaymentManager(App::make('App\MpesaAuth'),App::make('LipaNaMpesaBuilder'));
+        $this->app->bind('PaymentManager', function ($app) {
+            return new PaymentManager(App::make('App\MpesaAuth'), App::make('LipaNaMpesaBuilder'));
         });
 
 
-        $this->app->bind('LipaNaMpesaBuilder',function($app){
+        $this->app->bind('LipaNaMpesaBuilder', function ($app) {
 
             return new LipaNaMpesaBuilder();
         });
 
-        $this->app->bind('App\Blogs\Repositories\BlogRepositoryInterface',
-            'App\Repositories\BlogRepository');
+        $this->app->bind(
+            'App\Blogs\Repositories\BlogRepositoryInterface',
+            'App\Repositories\BlogRepository'
+        );
     }
 }

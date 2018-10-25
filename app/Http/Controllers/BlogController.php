@@ -34,13 +34,11 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::orderBy('created_at','desc')->paginate(10);
-        //dd($blogs);
-
         return view('blogs.index')->with('blogs', $blogs);
     }
     public function search(Request $search)
     {
-        //dd($search->all());
+
         $blogs = Blog::filterByDate($search['search'])->orderBy('created_at','desc')->paginate(10);
 
 
@@ -68,16 +66,8 @@ class BlogController extends Controller
         $this->validate($request,[
             'body'=>'required'
         ]);
-
         $blog = $this->blogRepository->save($request);
-
-
-        $users= User::all();
-
-       //Mail::to($users)->queue(new BlogObserverMail($blog));
-
         return redirect('blog')->with('success', 'Blog Created');
-
     }
     /**
      * Display the specified resource.
@@ -88,7 +78,7 @@ class BlogController extends Controller
     public function show($id)
     {
         $blog = $this->blogRepository->show($id);
-        //dd($blog);
+
         return view('blogs.show')->with('blog',$blog);
     }
 
@@ -112,12 +102,8 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $blog = new Blog();
-        $blog = Post::find($id);
-        $blog->title = $request->input('title');
-        $blog->body = $request->input('body');
-        $blog->save();
+
+       // return redirect('/index')->with('success', 'Blog Updated');
         return redirect('/index')->with('success', 'Blog Updated');
     }
 
@@ -132,4 +118,5 @@ class BlogController extends Controller
     {
         //
     }
+
 }

@@ -47,7 +47,7 @@ class BlogRepository implements BlogRepositoryInterface
 
     public function show($id)
     {
-       $blog= Blog::with('comments')->find($id);
+       $blog= Blog::with('comments','user')->find($id);
         return $blog;
     }
 }

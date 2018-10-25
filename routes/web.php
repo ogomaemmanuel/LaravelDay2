@@ -11,15 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::post('comments/{id?}', ['uses'=>'CommentsController@store','as'=>"comments.store" ]);
-Route::get('blog/search/{search?}',['uses'=>'BlogController@search','as'=>"blog.search" ]);
+Route::post('comments/{id?}', ['uses' => 'CommentsController@store', 'as' => "comments.store"]);
+Route::get('blog/search/{search?}', ['uses' => 'BlogController@search', 'as' => "blog.search"]);
 
 Route::resource('blog', 'BlogController');
